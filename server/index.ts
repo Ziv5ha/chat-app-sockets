@@ -19,11 +19,14 @@ const io = new Server(httpServer, {
 
 io.on('connection', (socket) => {
   console.log('Socket connected');
-});
+  socket.emit('brodcast', `welcome user`);
+  io.emit('new_user', 'user join the chat');
 
-// app.listen(PORT, () => {
-//   console.log(`listening on ${PORT}`);
-// });
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+    io.emit('user_disconnected', 'user left the chat');
+  });
+});
 
 httpServer.listen(PORT, () => {
   console.log(`listening on ${PORT}`);
