@@ -14,7 +14,11 @@ app.get('/', (_req, res) => {
 
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
-  /* options */
+  cors: {
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST'],
+    credentials: false,
+  },
 });
 
 io.on('connection', (socket) => {
