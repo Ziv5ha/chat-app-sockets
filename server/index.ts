@@ -22,9 +22,18 @@ const io = new Server(httpServer, {
 });
 
 io.on('connection', (socket) => {
-  console.log('Socket connected');
-  socket.emit('brodcast', `welcome user`);
-  io.emit('new_user', 'user join the chat');
+  socket.on('log-in', ({ user }) => {
+    console.log(user);
+    io.emit('broadcast', {
+      msg: `${user} joined the caht.`,
+      sender: 'CHAT_SERVER',
+    });
+  });
+
+  socket.on('message', (data) => {
+    console.log(data);
+    io.emit('broadcast', data);
+  });
 
   socket.on('disconnect', () => {
     console.log('user disconnected');
