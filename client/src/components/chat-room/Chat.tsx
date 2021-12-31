@@ -1,9 +1,17 @@
-import React, { useRef } from 'react';
-import { io } from 'socket.io-client';
+import React, { useContext, useEffect } from 'react';
+import { Socket } from 'socket.io-client';
+import { userContext } from '../../context/userContext';
+import MsgForm from './MsgForm';
+import MsgsContainer from './MsgsContainer';
 
-export default function Chat() {
-  const socket = useRef(io('http://localhost:3001'));
-  console.log(socket.current);
+export default function Chat({ socket }: { socket: Socket }) {
+  const user = useContext(userContext);
+  console.log(user);
 
-  return <div>Hello there</div>;
+  return (
+    <div>
+      <MsgsContainer socket={socket} />
+      <MsgForm socket={socket} />
+    </div>
+  );
 }
