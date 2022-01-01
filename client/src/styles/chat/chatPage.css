@@ -1,0 +1,10 @@
+.chat-page {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: baseline;
+}
+.chat-container {
+  width: 70%;
+}

@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from 'react';
 import { Socket } from 'socket.io-client';
 import userContext from '../../context/userContext';
-import '../../styles/login/page.css';
+import '../../styles/login/login.css';
 
 export default function LoginPage({ socket }: { socket: Socket }) {
   const username = useRef<HTMLInputElement>(null);
@@ -19,7 +19,7 @@ export default function LoginPage({ socket }: { socket: Socket }) {
   };
 
   return (
-    <form className='user-input-div login' onSubmit={loginFunc}>
+    <form className='user-input-form' onSubmit={loginFunc}>
       <input
         ref={username}
         type='text'

@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 import React, { useEffect, useState } from 'react';
 import { Socket } from 'socket.io-client';
+import '../../styles/chat/online.css';
 
 export default function OnlineList({ socket }: { socket: Socket }) {
   const [online, setOnline] = useState<string[]>(['GLOBAL CHAT ROOM']);
@@ -11,7 +12,7 @@ export default function OnlineList({ socket }: { socket: Socket }) {
     <li key={nanoid()}>{username}</li>
   ));
   return (
-    <ul>
+    <ul className='online-list'>
       <li>GLOBAL</li>
       {onlineList}
     </ul>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Socket } from 'socket.io-client';
 import Msg from './Msg';
 import { nanoid } from 'nanoid';
+import '../../styles/chat/chatContainer.css';
 
 export default function MsgsContainer({ socket }: { socket: Socket }) {
   const [msgs, setMsgs] = useState<Msgs[]>([]);
@@ -12,9 +13,13 @@ export default function MsgsContainer({ socket }: { socket: Socket }) {
     });
   }, []);
 
-  const msgsJSX = msgs.map(({ sender, msg }) => (
-    <Msg key={nanoid()} sender={sender} msg={msg} />
-  ));
+  const msgsJSX = msgs.map(({ sender, msg }) =>
+    sender === 'CHAT_SERVER' ? (
+      <p className='server-send-msg'>{msg}</p>
+    ) : (
+      <Msg key={nanoid()} sender={sender} msg={msg} />
+    )
+  );
 
-  return <div>{msgsJSX}</div>;
+  return <div className='chat'>{msgsJSX}</div>;
 }
