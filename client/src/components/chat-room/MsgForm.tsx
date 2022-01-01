@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Socket } from 'socket.io-client';
 
 export default function MsgForm({ socket }: { socket: Socket }) {
@@ -7,7 +7,7 @@ export default function MsgForm({ socket }: { socket: Socket }) {
   const sendText = (event: React.FormEvent) => {
     event.preventDefault();
     socket.emit('message', {
-      sender: 'client',
+      id: socket.id,
       msg: sendMsgInputRef.current?.value,
     });
     if (sendMsgInputRef.current) sendMsgInputRef.current.value = '';

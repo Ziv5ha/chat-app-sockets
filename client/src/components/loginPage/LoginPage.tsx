@@ -1,21 +1,20 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Socket } from 'socket.io-client';
+import userContext from '../../context/userContext';
 import '../../styles/login/page.css';
 
-export default function LoginPage({
-  setUser,
-  socket,
-}: {
-  setUser: React.Dispatch<React.SetStateAction<string>>;
-  socket: Socket;
-}) {
+export default function LoginPage({ socket }: { socket: Socket }) {
   const username = useRef<HTMLInputElement>(null);
+  const { setUser } = useContext(userContext);
 
   const loginFunc = (e: React.FormEvent) => {
     e.preventDefault();
     if (username.current) {
       setUser(username.current.value);
-      socket.emit('log-in', { user: username.current.value });
+      socket.emit('log-in', {
+        username: username.current.value,
+        id: socket.id,
+      });
     }
   };
 
