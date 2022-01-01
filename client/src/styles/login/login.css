@@ -1,0 +1,39 @@
+.user-input-form {
+  height: 100%;
+  width: 60%;
+  max-width: 30em;
+  margin: 10em auto;
+  background-color: rgb(236, 235, 235);
+  border-radius: 0.7em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 0 10px 3px rgb(54, 54, 53);
+}
+.user-input-form input {
+  font-size: 1.5em;
+  border: none;
+  padding: 0.3em;
+  border-radius: 0.3em;
+  margin: 0.5em auto;
+  width: 90%;
+}
+.user-input-form button {
+  font-size: 1.5em;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin: 0.5em auto;
+  width: 90%;
+  background-color: #e1701a;
+  box-shadow: 0 0 7px 1px #ec7f2c;
+}
+.login {
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+.register {
+  grid-column-start: 2;
+  grid-row-start: 1;
+}

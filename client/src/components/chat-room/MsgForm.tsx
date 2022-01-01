@@ -1,5 +1,6 @@
 import React, { useContext, useRef } from 'react';
 import { Socket } from 'socket.io-client';
+import '../../styles/chat/msgForm.css';
 
 export default function MsgForm({ socket }: { socket: Socket }) {
   const sendMsgInputRef = useRef<HTMLInputElement>(null);
@@ -13,9 +14,11 @@ export default function MsgForm({ socket }: { socket: Socket }) {
     if (sendMsgInputRef.current) sendMsgInputRef.current.value = '';
   };
   return (
-    <form onSubmit={sendText}>
+    <form onSubmit={sendText} className='send-input'>
       <input ref={sendMsgInputRef} type='text' />
-      <button type='submit'>Send</button>
+      <button type='submit'>
+        <i className='fas fa-paper-plane'></i>
+      </button>
     </form>
   );
 }

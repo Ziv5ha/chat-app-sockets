@@ -1,0 +1,10 @@
+.log-reg {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6em;
+  width: 70%;
+  max-width: 30em;
+  height: 20em;
+  margin: 15% auto;
+  padding: 1em;
+}
